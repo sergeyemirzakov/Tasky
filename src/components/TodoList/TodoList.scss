@@ -1,0 +1,17 @@
+.default {
+  border: 2px solid #e2e8f0;
+  background-color: #edf2f7;
+  transition: all 0.3s;
+}
+
+.important {
+  border: 2px solid #fbd38d;
+  background-color: #feebc8;
+  transition: all 0.3s;
+}
+
+.complete {
+  border: 2px solid #9ae6b4;
+  background-color: #c6f6d5;
+  transition: all 0.3s;
+}
