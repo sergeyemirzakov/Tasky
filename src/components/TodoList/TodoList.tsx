@@ -44,9 +44,11 @@ export const TodoList: React.FC<TodoListProps> = ({ task, value }) => {
         .filter((v) => {
           if (value === '') return v;
           else if (v.text.toLowerCase().includes(value.toLowerCase())) return v;
+          return v;
         })
         .map((todo) => (
           <TodoItem
+            key={todo.id}
             todo={todo}
             onCompleteTaks={(id) => onCompleteTaks(id)}
             onImportantTask={(id) => onImportantTask(id)}

@@ -21,7 +21,7 @@ export const MainContent: React.FC = () => {
   };
 
   const addTask = () => {
-    dispatch(addTodo(value));
+    if (value !== '' && value.trim()) dispatch(addTodo(value));
     setValue('');
   };
 
