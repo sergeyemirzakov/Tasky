@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Box, Text, Switch } from '@chakra-ui/react';
 import { GrClose } from 'react-icons/gr';
-import { RiEdit2Line } from 'react-icons/ri';
 import classNames from 'classnames';
+import { CustomTextField } from '../CustomTextField/CustomTextField';
 
 interface TodoItem {
   todo: {
@@ -34,7 +34,7 @@ export const TodoItem: React.FC<TodoItem> = ({
         key={todo.id}
         p={2}
         borderRadius="md"
-        height="80px">
+        min-height="80px">
         <Box display="flex" justifyContent="space-between" marginBottom={1}>
           <Box display="flex">
             <Box display="flex" alignItems="center">
@@ -63,10 +63,8 @@ export const TodoItem: React.FC<TodoItem> = ({
           </Box>
           <GrClose onClick={() => removeTask(todo.id)} cursor="pointer" />
         </Box>
-        <Text>{todo.text}</Text>
-        <Box display="flex" justifyContent="flex-end">
-          <RiEdit2Line cursor="pointer" />
-        </Box>
+
+        <CustomTextField id={todo.id} text={todo.text} />
       </Box>
     </>
   );

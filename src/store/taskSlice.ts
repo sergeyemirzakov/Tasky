@@ -1,4 +1,6 @@
+import { v4 as uuidv4 } from 'uuid';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { text } from 'stream/consumers';
 
 export interface taskSliceTypes {
   todos: any[];
@@ -14,7 +16,7 @@ export const taskSlice = createSlice({
   reducers: {
     addTodo: (state, action: PayloadAction<string>) => {
       state.todos.push({
-        id: new Date().toISOString(),
+        id: uuidv4(),
         text: action.payload,
         complete: false,
         important: false,
@@ -33,9 +35,14 @@ export const taskSlice = createSlice({
     isRemoveTask: (state, action: PayloadAction<string>) => {
       state.todos = state.todos.filter((i) => i.id !== action.payload);
     },
+    changeUserValue: (state, action: PayloadAction<{ id: string; textValue: any }>) => {
+      const changeTextValue = state.todos.find((t) => t.id === action.payload.id);
+      changeTextValue.text = action.payload.textValue;
+    },
   },
 });
 
-export const { addTodo, isComplete, isImportant, isRemoveTask } = taskSlice.actions;
+export const { addTodo, isComplete, isImportant, isRemoveTask, changeUserValue } =
+  taskSlice.actions;
 
 export default taskSlice.reducer;
