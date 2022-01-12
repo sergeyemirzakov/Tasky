@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Text, Input } from '@chakra-ui/react';
 import { RiEdit2Line } from 'react-icons/ri';
 import { MdFileDownloadDone } from 'react-icons/md';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { changeUserValue } from '../../store/taskSlice';
 
 interface CustomTextFieldProps {
