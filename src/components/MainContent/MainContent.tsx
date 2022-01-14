@@ -8,6 +8,7 @@ import { Badges } from '../Badges/Badges';
 import { useSelector, useDispatch } from 'react-redux';
 import { addTodo } from '../../store/taskSlice';
 import { RootState } from '../../store/store';
+import { AddTaskFrom } from '../AddTaskFrom/AddTaskFrom';
 
 export const MainContent: React.FC = () => {
   const dispatch = useDispatch();
@@ -63,6 +64,7 @@ export const MainContent: React.FC = () => {
             />
           </Box>
           <Badges task={task} />
+          <AddTaskFrom />
           <TodoList task={task} value={value} />
         </Box>
       </Box>
