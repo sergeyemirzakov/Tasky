@@ -1,12 +1,11 @@
 import { v4 as uuidv4 } from 'uuid';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { text } from 'stream/consumers';
 
-export interface taskSliceTypes {
-  todos: any[];
+export interface IInitialState {
+  todos: Array<any>;
 }
 
-const initialState: taskSliceTypes = {
+const initialState: IInitialState = {
   todos: [],
 };
 
