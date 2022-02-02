@@ -11,7 +11,6 @@ const theme = extendTheme({
   styles: {
     global: {
       body: {
-        // bg: 'purple.50',
         fontFamily: 'Roboto, sans-serif',
         color: 'gray.900',
       },
