@@ -2,10 +2,15 @@ import React from 'react';
 import { Box, Text } from '@chakra-ui/react';
 import { MdAdd } from 'react-icons/md';
 
-export const AddNewTask: React.FC = () => {
+interface IAddNewTask {
+  onShowModalHandler: (booleanValue: boolean) => void;
+}
+
+export const AddNewTask: React.FC<IAddNewTask> = ({ onShowModalHandler }) => {
   return (
     <>
       <Box
+        onClick={() => onShowModalHandler(true)}
         bg="blue.400"
         w="40px"
         h="40px"

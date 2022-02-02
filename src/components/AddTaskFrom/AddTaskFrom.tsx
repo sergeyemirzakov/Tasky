@@ -8,8 +8,12 @@ import { IoMdClose } from 'react-icons/io';
 import { useDispatch } from 'react-redux';
 import { addTodo } from '../../store/taskSlice';
 
-export const AddTaskFrom = () => {
-  const modalRoot = document.getElementById('modal-root') as HTMLElement;
+interface IAddTaskForm {
+  onShowModalHandler: (booleanValue: boolean) => void;
+}
+
+export const AddTaskFrom: React.FC<IAddTaskForm> = ({ onShowModalHandler }) => {
+  const modalRoot = document.getElementById('modal-root') as HTMLElement; // ModalRoot
   const dispatch = useDispatch();
   const [value, setValue] = React.useState<string>('');
 
@@ -34,7 +38,9 @@ export const AddTaskFrom = () => {
       <Box className="modal__screen" top="50%" left="50%" width="100%" maxW="500px">
         <Box display="flex" alignItems="baseline" justifyContent="space-between">
           <Text>Do you want to add a new taks???</Text>
-          <IoMdClose cursor="pointer" />
+          <Box onClick={() => onShowModalHandler(false)}>
+            <IoMdClose cursor="pointer" />
+          </Box>
         </Box>
         <Box marginTop="10px" marginBottom="10px">
           <Input
@@ -46,7 +52,7 @@ export const AddTaskFrom = () => {
           />
         </Box>
         <Box>
-          <Button onClick={onAddTaskHandler} colorScheme="blue">
+          <Button colorScheme="blue" onClick={onAddTaskHandler}>
             Add Task
           </Button>
         </Box>
