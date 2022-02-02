@@ -16,10 +16,10 @@ interface TodoListProps {
     complete: boolean;
     important: boolean;
   }[];
-  value: string;
+  value?: string;
 }
 
-export const TodoList: React.FC<TodoListProps> = ({ task, value }) => {
+export const TodoList: React.FC<TodoListProps> = ({ task }) => {
   const dispatch = useDispatch();
 
   const onCompleteTaks = (id: string) => {
@@ -40,21 +40,15 @@ export const TodoList: React.FC<TodoListProps> = ({ task, value }) => {
 
   return (
     <SimpleGrid marginTop={5} columns={2} spacing={5}>
-      {task
-        .filter((v) => {
-          if (value === '') return v;
-          else if (v.text.toLowerCase().includes(value.toLowerCase())) return v;
-          return v;
-        })
-        .map((todo) => (
-          <TodoItem
-            key={todo.id}
-            todo={todo}
-            onCompleteTaks={(id) => onCompleteTaks(id)}
-            onImportantTask={(id) => onImportantTask(id)}
-            removeTask={(id) => removeTask(id)}
-          />
-        ))}
+      {task.map((todo) => (
+        <TodoItem
+          key={todo.id}
+          todo={todo}
+          onCompleteTaks={(id) => onCompleteTaks(id)}
+          onImportantTask={(id) => onImportantTask(id)}
+          removeTask={(id) => removeTask(id)}
+        />
+      ))}
     </SimpleGrid>
   );
 };
