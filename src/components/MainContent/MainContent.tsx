@@ -22,10 +22,22 @@ export const MainContent: React.FC = () => {
 
   return (
     <>
-      <Box width="100%" display="flex" alignItems="center" flexDirection="column" p={8}>
+      <Box
+        width="100%"
+        display="flex"
+        alignItems="center"
+        flexDirection="column"
+        py={1}
+        paddingLeft={7}>
         <Box width="100%">
-          <Box display="flex" alignItems="center" justifyContent="space-between">
-            <Box display="flex" alignItems="center">
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="space-between"
+            p={5}
+            borderRadius={10}
+            bg="white">
+            <Box display="flex" alignItems="center" marginRight={5}>
               <AddNewTask
                 onShowModalHandler={(booleanValue: boolean) =>
                   onShowModalHandler(booleanValue)

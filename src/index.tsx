@@ -12,7 +12,7 @@ const theme = extendTheme({
     global: {
       body: {
         fontFamily: 'Roboto, sans-serif',
-        color: 'gray.900',
+        color: 'gray.600',
         backgroundColor: '#f7f6f4',
       },
     },

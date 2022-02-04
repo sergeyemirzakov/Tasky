@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import { SideLine } from './components/SideLine/SideLine';
+import { Sidebar } from './components/Sidebar/Sidebar';
 import { MainContent } from './components/MainContent/MainContent';
 import { db } from './database/firebase';
 
@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <div className="app_content">
-        <SideLine />
+        <Sidebar />
         <MainContent />
       </div>
     </div>

@@ -11,7 +11,7 @@ export const AddNewTask: React.FC<IAddNewTask> = ({ onShowModalHandler }) => {
     <>
       <Box
         onClick={() => onShowModalHandler(true)}
-        bg="blue.400"
+        bg="orange.400"
         w="40px"
         h="40px"
         cursor="pointer"

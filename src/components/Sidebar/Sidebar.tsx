@@ -1,11 +1,12 @@
 import React from 'react';
 
-import Logo from '../../logo.svg';
+import { Logotype } from '../Logotype/Logotype';
+
 import { TiInfoLargeOutline } from 'react-icons/ti';
 import { HiOutlineColorSwatch } from 'react-icons/hi';
 import { Box } from '@chakra-ui/react';
 
-export const SideLine: React.FC = () => {
+export const Sidebar: React.FC = () => {
   return (
     <>
       <Box
@@ -16,12 +17,11 @@ export const SideLine: React.FC = () => {
         borderRadius={10}
         flexDirection="column"
         justifyContent="space-between"
+        alignItems="center"
         margin="auto"
-        py={9}
-        px={2}>
-        <Box>
-          <img src={Logo} alt="" />
-        </Box>
+        py={5}
+        px={5}>
+        <Logotype />
         <Box display="flex" flexDirection="column" alignItems="center">
           <Box marginBottom={5}>
             <TiInfoLargeOutline size="1.8rem" cursor="pointer" color="white" />
