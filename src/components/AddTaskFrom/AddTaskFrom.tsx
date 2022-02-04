@@ -8,6 +8,8 @@ import { IoMdClose } from 'react-icons/io';
 import { useDispatch } from 'react-redux';
 import { addTodo } from '../../store/taskSlice';
 
+import notificationSound from '../../sounds/notification.mp3';
+
 interface IAddTaskForm {
   onShowModalHandler: (booleanValue: boolean) => void;
 }
@@ -17,6 +19,8 @@ export const AddTaskFrom: React.FC<IAddTaskForm> = ({ onShowModalHandler }) => {
   const dispatch = useDispatch();
   const [value, setValue] = React.useState<string>('');
 
+  const playNotification = new Audio(notificationSound);
+
   const onChangeValueHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setValue(e.target.value);
   };
@@ -24,6 +28,7 @@ export const AddTaskFrom: React.FC<IAddTaskForm> = ({ onShowModalHandler }) => {
   const onAddTaskHandler = () => {
     if (value !== '' && value.trim()) dispatch(addTodo(value));
     setValue('');
+    playNotification.play();
   };
 
   const OnKeyDownHandler: React.KeyboardEventHandler<HTMLInputElement> = (e): void => {
