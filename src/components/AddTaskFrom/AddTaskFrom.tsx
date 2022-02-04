@@ -26,9 +26,11 @@ export const AddTaskFrom: React.FC<IAddTaskForm> = ({ onShowModalHandler }) => {
   };
 
   const onAddTaskHandler = () => {
-    if (value !== '' && value.trim()) dispatch(addTodo(value));
+    if (value !== '' && value.trim()) {
+      dispatch(addTodo(value));
+      playNotification.play();
+    }
     setValue('');
-    playNotification.play();
   };
 
   const OnKeyDownHandler: React.KeyboardEventHandler<HTMLInputElement> = (e): void => {

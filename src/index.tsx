@@ -13,6 +13,7 @@ const theme = extendTheme({
       body: {
         fontFamily: 'Roboto, sans-serif',
         color: 'gray.900',
+        backgroundColor: '#f7f6f4',
       },
     },
   },

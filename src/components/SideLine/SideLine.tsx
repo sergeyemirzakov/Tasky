@@ -9,14 +9,16 @@ export const SideLine: React.FC = () => {
   return (
     <>
       <Box
-        bg="blue.400"
-        height="100vh"
+        bg="white"
+        height="95vh"
+        width="250px"
         display="flex"
+        borderRadius={10}
         flexDirection="column"
-        alignItems="center"
         justifyContent="space-between"
+        margin="auto"
         py={9}
-        px={3}>
+        px={2}>
         <Box>
           <img src={Logo} alt="" />
         </Box>

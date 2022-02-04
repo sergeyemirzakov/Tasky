@@ -22,8 +22,8 @@ export const MainContent: React.FC = () => {
 
   return (
     <>
-      <Box w="100%" display="flex" alignItems="center" flexDirection="column" p={8}>
-        <Box maxW="1000px" w="100%">
+      <Box width="100%" display="flex" alignItems="center" flexDirection="column" p={8}>
+        <Box width="100%">
           <Box display="flex" alignItems="center" justifyContent="space-between">
             <Box display="flex" alignItems="center">
               <AddNewTask
