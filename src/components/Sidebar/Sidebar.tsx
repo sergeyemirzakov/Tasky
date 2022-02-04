@@ -36,7 +36,7 @@ export const Sidebar: React.FC = () => {
             px={4}
             w="100%"
             _hover={{ backgroundColor: 'orange.100' }}>
-            <MdOutlineDashboardCustomize size="1.8rem" cursor="pointer" color="#4A5568" />
+            <MdOutlineDashboardCustomize size="1.7rem" cursor="pointer" color="#4A5568" />
             <Text marginLeft={3}>Dashboard</Text>
           </Box>
           <Box
@@ -47,7 +47,7 @@ export const Sidebar: React.FC = () => {
             px={4}
             w="100%"
             _hover={{ backgroundColor: 'orange.100' }}>
-            <MdTimer size="1.8rem" cursor="pointer" color="#4A5568" />
+            <MdTimer size="1.7rem" cursor="pointer" color="#4A5568" />
             <Text marginLeft={3}>Pomidoro</Text>
           </Box>
           <Box
@@ -58,10 +58,9 @@ export const Sidebar: React.FC = () => {
             px={4}
             w="100%"
             _hover={{ backgroundColor: 'orange.100' }}>
-            <MdOutlineSettings size="1.8rem" cursor="pointer" color="#4A5568" />
+            <MdOutlineSettings size="1.7rem" cursor="pointer" color="#4A5568" />
             <Text marginLeft={3}>Settings</Text>
           </Box>
-
           <Box
             display="flex"
             alignItems="center"
@@ -70,7 +69,7 @@ export const Sidebar: React.FC = () => {
             px={4}
             w="100%"
             _hover={{ backgroundColor: 'orange.100' }}>
-            <MdOutlineInfo size="1.8rem" cursor="pointer" color="#4A5568" />
+            <MdOutlineInfo size="1.7rem" cursor="pointer" color="#4A5568" />
             <Text marginLeft={3}>Info</Text>
           </Box>
         </Box>
