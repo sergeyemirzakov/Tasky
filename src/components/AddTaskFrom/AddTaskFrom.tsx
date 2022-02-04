@@ -42,7 +42,13 @@ export const AddTaskFrom: React.FC<IAddTaskForm> = ({ onShowModalHandler }) => {
   return ReactDOM.createPortal(
     <>
       <Box className="modal__screen-overlay"></Box>
-      <Box className="modal__screen" top="50%" left="50%" width="100%" maxW="500px">
+      <Box
+        className="modal__screen"
+        top="50%"
+        left="50%"
+        width="100%"
+        maxW="500px"
+        boxShadow="xl">
         <Box display="flex" alignItems="baseline" justifyContent="space-between">
           <Text>Do you want to add a new taks???</Text>
           <Box onClick={() => onShowModalHandler(false)}>
@@ -52,14 +58,18 @@ export const AddTaskFrom: React.FC<IAddTaskForm> = ({ onShowModalHandler }) => {
         <Box marginTop="10px" marginBottom="10px">
           <Input
             onKeyDown={OnKeyDownHandler}
-            focusBorderColor="blue.400"
+            focusBorderColor="orange.400"
             placeholder="Create a new task"
             value={value}
             onChange={onChangeValueHandler}
           />
         </Box>
         <Box>
-          <Button colorScheme="blue" onClick={onAddTaskHandler}>
+          <Button
+            bg="orange.400"
+            color="white"
+            _hover={{ backgroundColor: 'orange.500' }}
+            onClick={onAddTaskHandler}>
             Add Task
           </Button>
         </Box>

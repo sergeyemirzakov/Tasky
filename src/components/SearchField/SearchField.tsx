@@ -1,11 +1,19 @@
 import React from 'react';
 
-import { Input } from '@chakra-ui/react';
+import { InputGroup, InputLeftElement, Input, Box } from '@chakra-ui/react';
+
+import { BiSearch } from 'react-icons/bi';
 
 export const SearchField: React.FC = () => {
   return (
-    <>
-      <Input focusBorderColor="orange.400" w="30%" placeholder="Search" />
-    </>
+    <Box width="30%">
+      <InputGroup>
+        <InputLeftElement
+          pointerEvents="none"
+          children={<BiSearch size="1.2rem" color="orange.500" />}
+        />
+        <Input type="text" focusBorderColor="orange.400" placeholder="Search..." />
+      </InputGroup>
+    </Box>
   );
 };

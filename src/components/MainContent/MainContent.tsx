@@ -36,7 +36,8 @@ export const MainContent: React.FC = () => {
             justifyContent="space-between"
             p={5}
             borderRadius={10}
-            bg="white">
+            bg="white"
+            boxShadow="sm">
             <Box display="flex" alignItems="center" marginRight={5}>
               <AddNewTask
                 onShowModalHandler={(booleanValue: boolean) =>

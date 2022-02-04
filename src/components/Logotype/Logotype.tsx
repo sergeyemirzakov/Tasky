@@ -4,7 +4,7 @@ import { Box } from '@chakra-ui/react';
 
 export const Logotype: React.FC = () => {
   return (
-    <Box>
+    <Box marginTop={4}>
       <svg
         width="38"
         height="37"
