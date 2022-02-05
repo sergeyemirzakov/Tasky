@@ -19,7 +19,7 @@ export const Sidebar: React.FC = () => {
         height="95vh"
         width="250px"
         display="flex"
-        borderRadius={10}
+        borderRadius="xl"
         flexDirection="column"
         alignItems="center"
         margin="auto"
