@@ -9,17 +9,7 @@ import { useDispatch } from 'react-redux';
 import { DefaultScreen } from '../DefaultScreen/DefaultScreen';
 import { TodoItem } from '../TodoItem/TodoItem';
 
-import {
-  Table,
-  TableCaption,
-  Thead,
-  Tr,
-  Th,
-  Tbody,
-  Tfoot,
-  Td,
-  Divider,
-} from '@chakra-ui/react';
+import { Table, Thead, Tr, Th, Tbody, Tfoot, Td } from '@chakra-ui/react';
 
 interface TodoListProps {
   task: {
@@ -51,9 +41,9 @@ export const TodoList: React.FC<TodoListProps> = ({ task }) => {
   // }
 
   return (
-    <Box bg="white" borderRadius="10px" boxShadow="base">
+    <Box bg="white" borderRadius="xl" boxShadow="base">
       <Table size="md" rounded="md" variant="simple">
-        <Thead>
+        <Thead marginBottom={10}>
           <Tr>
             <Th width="50px">#</Th>
             <Th borderLeft="1px solid #E2E8F0">Task name</Th>
@@ -69,25 +59,31 @@ export const TodoList: React.FC<TodoListProps> = ({ task }) => {
           </Tr>
         </Thead>
         <Tbody>
-          <Td>25.4</Td>
-          <Td borderLeft="1px solid #E2E8F0">inches</Td>
-          <Td borderLeft="1px solid #E2E8F0">millimetres (mm)</Td>
-          <Td borderLeft="1px solid #E2E8F0">25.4</Td>
-          <Td borderLeft="1px solid #E2E8F0">25.4</Td>
+          <Tr>
+            <Td>25.4</Td>
+            <Td borderLeft="1px solid #E2E8F0">inches</Td>
+            <Td borderLeft="1px solid #E2E8F0">millimetres (mm)</Td>
+            <Td borderLeft="1px solid #E2E8F0">25.4</Td>
+            <Td borderLeft="1px solid #E2E8F0">25.4</Td>
+          </Tr>
         </Tbody>
         <Tbody>
-          <Td>25.4</Td>
-          <Td borderLeft="1px solid #E2E8F0">inches</Td>
-          <Td borderLeft="1px solid #E2E8F0">millimetres (mm)</Td>
-          <Td borderLeft="1px solid #E2E8F0">25.4</Td>
-          <Td borderLeft="1px solid #E2E8F0">25.4</Td>
+          <Tr>
+            <Td>25.4</Td>
+            <Td borderLeft="1px solid #E2E8F0">inches</Td>
+            <Td borderLeft="1px solid #E2E8F0">millimetres (mm)</Td>
+            <Td borderLeft="1px solid #E2E8F0">25.4</Td>
+            <Td borderLeft="1px solid #E2E8F0">25.4</Td>
+          </Tr>
         </Tbody>
         <Tbody>
-          <Td>25.4</Td>
-          <Td borderLeft="1px solid #E2E8F0">inches</Td>
-          <Td borderLeft="1px solid #E2E8F0">millimetres (mm)</Td>
-          <Td borderLeft="1px solid #E2E8F0">25.4</Td>
-          <Td borderLeft="1px solid #E2E8F0">25.4</Td>
+          <Tr>
+            <Td>25.4</Td>
+            <Td borderLeft="1px solid #E2E8F0">inches</Td>
+            <Td borderLeft="1px solid #E2E8F0">millimetres (mm)</Td>
+            <Td borderLeft="1px solid #E2E8F0">25.4</Td>
+            <Td borderLeft="1px solid #E2E8F0">25.4</Td>
+          </Tr>
         </Tbody>
       </Table>
     </Box>
