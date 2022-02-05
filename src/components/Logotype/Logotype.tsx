@@ -1,20 +1,23 @@
 import React from 'react';
+import './Logotype.scss';
 
-import { Box } from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
 
 export const Logotype: React.FC = () => {
   return (
-    <Box marginTop={4}>
-      <svg
-        width="38"
-        height="37"
-        viewBox="0 0 38 37"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" width="9" height="37" fill="#4A5568" />
-        <rect x="19" width="8" height="19" transform="rotate(90 19 0)" fill="#4A5568" />
-        <circle cx="30.5" cy="7.5" r="7.5" fill="#4A5568" />
-      </svg>
+    <Box
+      bg="orange.400"
+      marginTop={4}
+      width="90px"
+      height="90px"
+      borderRadius="md"
+      display="flex"
+      alignItems="center"
+      justifyContent="center">
+      <Box>
+        <h1 className="logotype">Tasky</h1>
+        <h2 className="sub__logotype">Task manager</h2>
+      </Box>
     </Box>
   );
 };
