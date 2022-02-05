@@ -1,10 +1,9 @@
 import React from 'react';
 
+import { MainContentHeader } from '../MainContentHeader/MainContentHeader';
 import { TodoList } from '../TodoList/TodoList';
 import { Badges } from '../Badges/Badges';
-import { AddNewTask } from '../AddNewTask/AddNewTask';
 import { AddTaskFrom } from '../AddTaskFrom/AddTaskFrom';
-import { SearchField } from '../SearchField/SearchField';
 
 import { Box } from '@chakra-ui/react';
 
@@ -30,23 +29,11 @@ export const MainContent: React.FC = () => {
         py={1}
         paddingLeft={7}>
         <Box width="100%">
-          <Box
-            display="flex"
-            alignItems="center"
-            justifyContent="space-between"
-            p={5}
-            borderRadius={10}
-            bg="white"
-            boxShadow="sm">
-            <Box display="flex" alignItems="center" marginRight={5}>
-              <AddNewTask
-                onShowModalHandler={(booleanValue: boolean) =>
-                  onShowModalHandler(booleanValue)
-                }
-              />
-            </Box>
-            <SearchField />
-          </Box>
+          <MainContentHeader
+            onShowModalHandler={(booleanValue: boolean) =>
+              onShowModalHandler(booleanValue)
+            }
+          />
           <Badges task={task} />
           {showModal && (
             <AddTaskFrom
