@@ -23,13 +23,12 @@ export const DateToday: React.FC = () => {
       <Box
         display="flex"
         alignItems="baseline"
-        bg="orange.100"
         px={2}
         py={1}
         borderRadius="md"
-        fontSize="14px"
-        color="orange.800">
-        <Box color="orange.800" marginRight={1}>
+        fontSize="12px"
+        color="gray.500">
+        <Box color="gray.500" marginRight={1}>
           <GoCalendar />
         </Box>
         <Text>Today is: {dating}</Text>

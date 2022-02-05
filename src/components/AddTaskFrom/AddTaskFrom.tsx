@@ -68,7 +68,7 @@ export const AddTaskFrom: React.FC<IAddTaskForm> = ({ onShowModalHandler }) => {
           <Button
             bg="orange.400"
             color="white"
-            _hover={{ backgroundColor: 'orange.500' }}
+            _hover={{ backgroundColor: 'orange.300' }}
             onClick={onAddTaskHandler}>
             Add Task
           </Button>

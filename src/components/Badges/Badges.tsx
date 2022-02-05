@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { Box, Badge, Text } from '@chakra-ui/react';
-import { DateToday } from '../Date/DateToday';
 
 interface BadgeTypes {
   task: string[];
@@ -26,7 +25,6 @@ export const Badges: React.FC<BadgeTypes> = ({ task }) => {
             Done
           </Badge>
         </Box>
-        <DateToday />
       </Box>
       <Box>
         <Text marginTop={2}>Total amount: {task.length}</Text>
