@@ -21,13 +21,7 @@ export const MainContent: React.FC = () => {
 
   return (
     <>
-      <Box
-        width="100%"
-        display="flex"
-        alignItems="center"
-        flexDirection="column"
-        py={1}
-        paddingLeft={7}>
+      <Box width="100%" display="flex" alignItems="center" flexDirection="column" px={10}>
         <Box width="100%">
           <MainContentHeader
             onShowModalHandler={(booleanValue: boolean) =>
