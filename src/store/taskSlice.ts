@@ -13,12 +13,12 @@ export const taskSlice = createSlice({
   name: 'task',
   initialState,
   reducers: {
-    addTodo: (state, action: PayloadAction<string>) => {
+    addTodo: (state, action: PayloadAction<{ text: string; priority: string }>) => {
       state.todos.push({
         id: uuidv4(),
-        text: action.payload,
+        text: action.payload.text.toLowerCase(),
         complete: false,
-        important: false,
+        priority: action.payload.priority,
       });
     },
     isComplete: (state, action: PayloadAction<string>) => {
@@ -26,22 +26,19 @@ export const taskSlice = createSlice({
       completeTodo.complete = !completeTodo.complete;
       completeTodo.important = false;
     },
-    isImportant: (state, action: PayloadAction<string>) => {
-      const importantTodo = state.todos.find((s) => s.id === action.payload);
-      importantTodo.important = !importantTodo.important;
-      importantTodo.complete = false;
-    },
     isRemoveTask: (state, action: PayloadAction<string>) => {
       state.todos = state.todos.filter((i) => i.id !== action.payload);
     },
-    changeUserValue: (state, action: PayloadAction<{ id: string; textValue: any }>) => {
+    changeUserValue: (
+      state,
+      action: PayloadAction<{ id: string; textValue: string }>,
+    ) => {
       const changeTextValue = state.todos.find((t) => t.id === action.payload.id);
       changeTextValue.text = action.payload.textValue;
     },
   },
 });
 
-export const { addTodo, isComplete, isImportant, isRemoveTask, changeUserValue } =
-  taskSlice.actions;
+export const { addTodo, isComplete, isRemoveTask, changeUserValue } = taskSlice.actions;
 
 export default taskSlice.reducer;
