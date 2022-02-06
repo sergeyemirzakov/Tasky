@@ -16,7 +16,7 @@ export const Sidebar: React.FC = () => {
         position="relative"
         zIndex="10"
         bg="white"
-        height="95vh"
+        height="100%"
         width="250px"
         display="flex"
         borderRadius="xl"
