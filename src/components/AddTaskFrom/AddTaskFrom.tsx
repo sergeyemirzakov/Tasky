@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './AddTaskFrom.scss';
 
-import { Box, Input, Text, Button } from '@chakra-ui/react';
+import { Box, Input, Text, Button, Select } from '@chakra-ui/react';
 import { IoMdClose } from 'react-icons/io';
 
 import { useDispatch } from 'react-redux';
@@ -18,6 +18,7 @@ export const AddTaskFrom: React.FC<IAddTaskForm> = ({ onShowModalHandler }) => {
   const modalRoot = document.getElementById('modal-root') as HTMLElement; // ModalRoot
   const dispatch = useDispatch();
   const [value, setValue] = React.useState<string>('');
+  const [priority, setPriority] = React.useState<string>('');
 
   const playNotification = new Audio(notificationSound);
 
@@ -25,10 +26,15 @@ export const AddTaskFrom: React.FC<IAddTaskForm> = ({ onShowModalHandler }) => {
     setValue(e.target.value);
   };
 
+  const onChangePriorityHanlder = (e: React.ChangeEvent<HTMLSelectElement>): void => {
+    setPriority(e.target.value);
+  };
+
   const onAddTaskHandler = () => {
     if (value !== '' && value.trim()) {
-      dispatch(addTodo(value));
+      dispatch(addTodo({ text: value, priority: priority || 'low' }));
       playNotification.play();
+      onShowModalHandler(false);
     }
     setValue('');
   };
@@ -64,6 +70,20 @@ export const AddTaskFrom: React.FC<IAddTaskForm> = ({ onShowModalHandler }) => {
             onChange={onChangeValueHandler}
           />
         </Box>
+        <Box marginBottom="20px">
+          <Text>Selected priority for your task</Text>
+          <Select
+            isDisabled={value ? false : true}
+            onChange={onChangePriorityHanlder}
+            focusBorderColor="orange.400"
+            size="sm">
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+            <option value="Extra">Extra</option>
+          </Select>
+        </Box>
+
         <Box>
           <Button
             bg="orange.400"
