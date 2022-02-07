@@ -1,9 +1,9 @@
 import React from 'react';
 import './TodoList.scss';
 
-import { Box, SimpleGrid } from '@chakra-ui/react';
+import { Box, Checkbox, Text, Badge } from '@chakra-ui/react';
 
-import { isComplete, isImportant, isRemoveTask } from '../../store/taskSlice';
+import { isComplete, isRemoveTask } from '../../store/taskSlice';
 import { useDispatch } from 'react-redux';
 
 import { DefaultScreen } from '../DefaultScreen/DefaultScreen';
@@ -16,7 +16,7 @@ interface TodoListProps {
     id: string;
     text: string;
     complete: boolean;
-    important: boolean;
+    priority: string;
   }[];
   value?: string;
 }
@@ -28,12 +28,13 @@ export const TodoList: React.FC<TodoListProps> = ({ task }) => {
     dispatch(isComplete(id));
   };
 
-  const onImportantTask = (id: string) => {
-    dispatch(isImportant(id));
-  };
-
   const removeTask = (id: string) => {
     dispatch(isRemoveTask(id));
+  };
+
+  const onEditTask = (id: string) => {
+    // const editibleTask = task.find((el) => el.id === id);
+    console.log(id);
   };
 
   // if (task.length === 0) {
@@ -41,62 +42,32 @@ export const TodoList: React.FC<TodoListProps> = ({ task }) => {
   // }
 
   return (
-    <Box bg="white" borderRadius="xl" boxShadow="base">
-      <Table size="md" rounded="md" variant="simple">
-        <Thead marginBottom={10}>
-          <Tr>
-            <Th width="50px">#</Th>
-            <Th borderLeft="1px solid #E2E8F0">Task name</Th>
-            <Th width="300px" borderLeft="1px solid #E2E8F0">
-              Priority
-            </Th>
-            <Th width="300px" borderLeft="1px solid #E2E8F0">
-              Status
-            </Th>
-            <Th width="300px" borderLeft="1px solid #E2E8F0">
-              Date
-            </Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          <Tr>
-            <Td>25.4</Td>
-            <Td borderLeft="1px solid #E2E8F0">inches</Td>
-            <Td borderLeft="1px solid #E2E8F0">millimetres (mm)</Td>
-            <Td borderLeft="1px solid #E2E8F0">25.4</Td>
-            <Td borderLeft="1px solid #E2E8F0">25.4</Td>
-          </Tr>
-        </Tbody>
-        <Tbody>
-          <Tr>
-            <Td>25.4</Td>
-            <Td borderLeft="1px solid #E2E8F0">inches</Td>
-            <Td borderLeft="1px solid #E2E8F0">millimetres (mm)</Td>
-            <Td borderLeft="1px solid #E2E8F0">25.4</Td>
-            <Td borderLeft="1px solid #E2E8F0">25.4</Td>
-          </Tr>
-        </Tbody>
-        <Tbody>
-          <Tr>
-            <Td>25.4</Td>
-            <Td borderLeft="1px solid #E2E8F0">inches</Td>
-            <Td borderLeft="1px solid #E2E8F0">millimetres (mm)</Td>
-            <Td borderLeft="1px solid #E2E8F0">25.4</Td>
-            <Td borderLeft="1px solid #E2E8F0">25.4</Td>
-          </Tr>
-        </Tbody>
-      </Table>
-    </Box>
-    // <SimpleGrid marginTop={5} columns={2} spacing={5}>
-    //   {task.map((todo) => (
-    //     <TodoItem
-    //       key={todo.id}
-    //       todo={todo}
-    //       onCompleteTaks={(id) => onCompleteTaks(id)}
-    //       onImportantTask={(id) => onImportantTask(id)}
-    //       removeTask={(id) => removeTask(id)}
-    //     />
-    //   ))}
-    // </SimpleGrid>
+    <>
+      <Box bg="white" borderRadius="xl" boxShadow="base">
+        <Table size="md" rounded="md" variant="simple">
+          <Thead>
+            <Tr>
+              <Th width="20px"></Th>
+              <Th borderLeft="0.5px solid #E2E8F0">Task name</Th>
+              <Th width="300px" borderLeft="0.5px solid #E2E8F0">
+                Priority
+              </Th>
+              <Th width="300px" borderLeft="0.5px solid #E2E8F0">
+                Status
+              </Th>
+            </Tr>
+          </Thead>
+          {task.map((todo) => (
+            <TodoItem
+              key={todo.id}
+              todo={todo}
+              onCompleteTaks={(id) => onCompleteTaks(id)}
+              removeTask={(id) => removeTask(id)}
+              onEditTask={(id) => onEditTask(id)}
+            />
+          ))}
+        </Table>
+      </Box>
+    </>
   );
 };
