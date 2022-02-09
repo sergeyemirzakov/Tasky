@@ -5,9 +5,9 @@ import { MainContent } from './components/MainContent/MainContent';
 import { db } from './database/firebase';
 
 function App() {
-  React.useEffect(() => {
-    console.log(db);
-  });
+  // React.useEffect(() => {
+  //   console.log(db);
+  // });
 
   return (
     <div className="App">
