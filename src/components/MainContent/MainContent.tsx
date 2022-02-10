@@ -2,7 +2,6 @@ import React from 'react';
 
 import { MainContentHeader } from '../MainContentHeader/MainContentHeader';
 import { TodoList } from '../TodoList/TodoList';
-import { Badges } from '../Badges/Badges';
 import { AddTaskFrom } from '../AddTaskFrom/AddTaskFrom';
 
 import { Box } from '@chakra-ui/react';
@@ -28,9 +27,9 @@ export const MainContent: React.FC = () => {
               onShowModalHandler(booleanValue)
             }
           />
-          <Badges task={task} />
           {showModal && (
             <AddTaskFrom
+              modalTitle="Do you want to add a new taks?"
               onShowModalHandler={(booleanValue: boolean) =>
                 onShowModalHandler(booleanValue)
               }
