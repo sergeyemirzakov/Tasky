@@ -1,13 +1,14 @@
-import { log } from 'console';
 import { v4 as uuidv4 } from 'uuid';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface IInitialState {
   todos: Array<any>;
+  showModal: boolean;
 }
 
 const initialState: IInitialState = {
   todos: [],
+  showModal: false,
 };
 
 export const taskSlice = createSlice({
@@ -25,21 +26,29 @@ export const taskSlice = createSlice({
     isComplete: (state, action: PayloadAction<string>) => {
       const completeTodo = state.todos.find((s) => s.id === action.payload);
       completeTodo.complete = !completeTodo.complete;
-      completeTodo.important = false;
     },
-    isRemoveTask: (state, action: PayloadAction<string>) => {
+    isRemoveTask: (state, action: PayloadAction<string | null>) => {
       state.todos = state.todos.filter((i) => i.id !== action.payload);
     },
-    changeUserValue: (
+    onEditTask: (
       state,
-      action: PayloadAction<{ id: string; textValue: string }>,
+      action: PayloadAction<{
+        id: string | null;
+        text: string | null;
+        priority: string | null;
+      }>,
     ) => {
-      const changeTextValue = state.todos.find((t) => t.id === action.payload.id);
-      changeTextValue.text = action.payload.textValue;
+      const currentTask = state.todos.find((t) => t.id === action.payload.id);
+      currentTask.text = action.payload.text;
+      currentTask.priority = action.payload.priority;
+    },
+    showModal: (state, action: PayloadAction<boolean>) => {
+      state.showModal = action.payload;
     },
   },
 });
 
-export const { addTodo, isComplete, isRemoveTask, changeUserValue } = taskSlice.actions;
+export const { addTodo, isComplete, isRemoveTask, onEditTask, showModal } =
+  taskSlice.actions;
 
 export default taskSlice.reducer;
