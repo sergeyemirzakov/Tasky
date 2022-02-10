@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+
 import './AddTaskFrom.scss';
 
 import { Box, Input, Text, Button, Select } from '@chakra-ui/react';
@@ -12,10 +12,13 @@ import notificationSound from '../../sounds/notification.mp3';
 
 interface IAddTaskForm {
   onShowModalHandler: (booleanValue: boolean) => void;
+  modalTitle: string;
 }
 
-export const AddTaskFrom: React.FC<IAddTaskForm> = ({ onShowModalHandler }) => {
-  const modalRoot = document.getElementById('modal-root') as HTMLElement; // ModalRoot
+export const AddTaskFrom: React.FC<IAddTaskForm> = ({
+  onShowModalHandler,
+  modalTitle,
+}) => {
   const dispatch = useDispatch();
   const [value, setValue] = React.useState<string>('');
   const [priority, setPriority] = React.useState<string>('');
@@ -45,7 +48,7 @@ export const AddTaskFrom: React.FC<IAddTaskForm> = ({ onShowModalHandler }) => {
     }
   };
 
-  return ReactDOM.createPortal(
+  return (
     <>
       <Box className="modal__screen-overlay"></Box>
       <Box
@@ -56,7 +59,7 @@ export const AddTaskFrom: React.FC<IAddTaskForm> = ({ onShowModalHandler }) => {
         maxW="500px"
         boxShadow="xl">
         <Box display="flex" alignItems="baseline" justifyContent="space-between">
-          <Text>Do you want to add a new taks???</Text>
+          <Text>{modalTitle}</Text>
           <Box onClick={() => onShowModalHandler(false)}>
             <IoMdClose cursor="pointer" />
           </Box>
@@ -94,7 +97,6 @@ export const AddTaskFrom: React.FC<IAddTaskForm> = ({ onShowModalHandler }) => {
           </Button>
         </Box>
       </Box>
-    </>,
-    modalRoot,
+    </>
   );
 };
