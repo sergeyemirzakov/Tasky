@@ -1,11 +1,8 @@
 import React from 'react';
 
-import { Box, Text, Switch, Checkbox, Badge } from '@chakra-ui/react';
+import { Box, Text, Checkbox, Badge } from '@chakra-ui/react';
 import { Tbody, Tr, Td } from '@chakra-ui/react';
 import { RiEdit2Line } from 'react-icons/ri';
-import { GrClose } from 'react-icons/gr';
-import { MdDeleteOutline } from 'react-icons/md';
-import { CustomTextField } from '../CustomTextField/CustomTextField';
 
 interface TodoItem {
   todo: {
@@ -15,17 +12,10 @@ interface TodoItem {
     text: string;
   };
   onCompleteTaks: (id: string) => void;
-  // onImportantTask: (id: string) => void;
-  removeTask: (id: string) => void;
-  onEditTask: (id: string) => void;
+  onEditTask: (id: string, textValue: string, priority: string) => void;
 }
 
-export const TodoItem: React.FC<TodoItem> = ({
-  todo,
-  onCompleteTaks,
-  removeTask,
-  onEditTask,
-}) => {
+export const TodoItem: React.FC<TodoItem> = ({ todo, onCompleteTaks, onEditTask }) => {
   const [checked, setChecked] = React.useState<boolean>(false);
   const [showEdit, setShowEdit] = React.useState<boolean>(false);
 
@@ -38,30 +28,44 @@ export const TodoItem: React.FC<TodoItem> = ({
     <>
       <Tbody>
         <Tr>
-          <Td>
-            <Box>
-              <MdDeleteOutline size="1.2rem" cursor="pointer" />
-            </Box>
-          </Td>
           <Td
-            onClick={() => onEditTask(todo.id)}
             onMouseLeave={() => setShowEdit(false)}
             onMouseOver={() => setShowEdit(true)}
             borderLeft="0.5px solid #E2E8F0"
             cursor="pointer"
-            _hover={{ backgroundColor: 'orange.50' }}>
+            transition="all .3s"
+            _hover={{ padding: '25px 24px', backgroundColor: 'orange.50' }}>
             <Box display="flex" alignItems="center" justifyContent="space-between">
               <Box display="flex">
                 <Checkbox
                   checked={checked}
-                  onChange={() => onChangeHandler(todo.id)}
+                  onChange={(e) => {
+                    e.stopPropagation();
+                    onChangeHandler(todo.id);
+                  }}
                   colorScheme="green"
                   marginRight={3}
                 />
                 <Text>{todo.text}</Text>
               </Box>
               {showEdit && (
-                <Box display="flex" alignItems="center" cursor="pointer">
+                <Box
+                  border="1px"
+                  borderColor="orange.300"
+                  borderRadius="md"
+                  transition="all .3s"
+                  padding="2px 10px"
+                  _hover={{
+                    backgroundColor: 'orange.300',
+                    color: 'white',
+                    padding: '5px 30px',
+                  }}
+                  onClick={(e) => {
+                    onEditTask(todo.id, todo.text, todo.priority);
+                  }}
+                  display="flex"
+                  alignItems="center"
+                  cursor="pointer">
                   <Box>
                     <RiEdit2Line />
                   </Box>

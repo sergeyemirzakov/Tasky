@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 
 import { DefaultScreen } from '../DefaultScreen/DefaultScreen';
 import { TodoItem } from '../TodoItem/TodoItem';
+import { EditTask } from '../EditTask/EditTask';
 
 import { Table, Thead, Tr, Th, Tbody, Tfoot, Td } from '@chakra-ui/react';
 
@@ -21,25 +22,43 @@ interface TodoListProps {
   value?: string;
 }
 
+interface IEditTask {
+  id: string | null;
+  textValue: string | null;
+  priority: string | null;
+}
+
 export const TodoList: React.FC<TodoListProps> = ({ task }) => {
   const dispatch = useDispatch();
+
+  const [editTask, setEditTask] = React.useState<IEditTask>({
+    id: null,
+    textValue: null,
+    priority: null,
+  });
+
+  const [showModal, setShowModal] = React.useState<boolean>(false);
 
   const onCompleteTaks = (id: string) => {
     dispatch(isComplete(id));
   };
 
-  const removeTask = (id: string) => {
+  const removeTask = (id: string | null) => {
     dispatch(isRemoveTask(id));
   };
 
-  const onEditTask = (id: string) => {
-    // const editibleTask = task.find((el) => el.id === id);
-    console.log(id);
+  const onEditTask = (id: string | null, textValue: string, priority: string) => {
+    setEditTask({
+      id,
+      textValue,
+      priority,
+    });
+    setShowModal(true);
   };
 
-  // if (task.length === 0) {
-  //   return <DefaultScreen />;
-  // }
+  if (task.length === 0) {
+    return <DefaultScreen />;
+  }
 
   return (
     <>
@@ -47,7 +66,6 @@ export const TodoList: React.FC<TodoListProps> = ({ task }) => {
         <Table size="md" rounded="md" variant="simple">
           <Thead>
             <Tr>
-              <Th width="20px"></Th>
               <Th borderLeft="0.5px solid #E2E8F0">Task name</Th>
               <Th width="300px" borderLeft="0.5px solid #E2E8F0">
                 Priority
@@ -62,11 +80,21 @@ export const TodoList: React.FC<TodoListProps> = ({ task }) => {
               key={todo.id}
               todo={todo}
               onCompleteTaks={(id) => onCompleteTaks(id)}
-              removeTask={(id) => removeTask(id)}
-              onEditTask={(id) => onEditTask(id)}
+              onEditTask={(id, textValue, priority) =>
+                onEditTask(id, textValue, priority)
+              }
             />
           ))}
         </Table>
+      </Box>
+      <Box>
+        {showModal && (
+          <EditTask
+            editTask={editTask}
+            setShowModal={setShowModal}
+            removeTask={(id) => removeTask(id)}
+          />
+        )}
       </Box>
     </>
   );
