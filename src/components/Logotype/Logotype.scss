@@ -1,15 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=The+Nautigal:wght@700&display=swap');
 
 .logotype {
+  margin: 0;
   font-size: 3rem;
   font-family: 'The Nautigal', cursive;
   transform: rotate(-10deg);
-  // color: #ed8936;
-  color: white;
-}
-
-.sub__logotype {
-  font-size: 11px;
-  color: white;
-  text-align: center;
+  line-height: 60px;
 }
