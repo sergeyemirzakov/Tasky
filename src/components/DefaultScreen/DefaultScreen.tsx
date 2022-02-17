@@ -6,7 +6,7 @@ export const DefaultScreen = () => {
   return (
     <>
       <Box height="75vh" display="flex" alignItems="center" justifyContent="center">
-        <Heading as="h1" size="3xl" color="orange.300">
+        <Heading as="h1" size="xl" color="gray.300">
           No tasks for today :)
         </Heading>
       </Box>
