@@ -8,12 +8,18 @@ import { Provider } from 'react-redux';
 import { extendTheme } from '@chakra-ui/react';
 
 const theme = extendTheme({
+  colors: {
+    brand: {
+      500: '#2262EA',
+      600: '#0c4fd3',
+    },
+  },
   styles: {
     global: {
       body: {
         fontFamily: 'Roboto, sans-serif',
         color: 'gray.600',
-        backgroundColor: '#f7f6f4',
+        backgroundColor: 'gray.100',
       },
     },
   },
