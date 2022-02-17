@@ -20,13 +20,18 @@ export const AddTaskFrom: React.FC<IAddTaskForm> = ({
   modalTitle,
 }) => {
   const dispatch = useDispatch();
-  const [value, setValue] = React.useState<string>('');
+  const [title, setTitle] = React.useState<string>('');
+  const [description, setDescription] = React.useState<string>('');
   const [priority, setPriority] = React.useState<string>('');
 
   const playNotification = new Audio(notificationSound);
 
-  const onChangeValueHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setValue(e.target.value);
+  const onChangeTitleHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setTitle(e.target.value);
+  };
+
+  const onChangeDescriptionHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setDescription(e.target.value);
   };
 
   const onChangePriorityHanlder = (e: React.ChangeEvent<HTMLSelectElement>): void => {
@@ -34,12 +39,18 @@ export const AddTaskFrom: React.FC<IAddTaskForm> = ({
   };
 
   const onAddTaskHandler = () => {
-    if (value !== '' && value.trim()) {
-      dispatch(addTodo({ text: value, priority: priority || 'low' }));
+    if (title !== '' && title.trim()) {
+      dispatch(
+        addTodo({
+          text: title,
+          priority: priority,
+          description: description || '',
+        }),
+      );
       playNotification.play();
       onShowModalHandler(false);
     }
-    setValue('');
+    setTitle('');
   };
 
   const OnKeyDownHandler: React.KeyboardEventHandler<HTMLInputElement> = (e): void => {
@@ -67,31 +78,39 @@ export const AddTaskFrom: React.FC<IAddTaskForm> = ({
         <Box marginTop="10px" marginBottom="10px">
           <Input
             onKeyDown={OnKeyDownHandler}
-            focusBorderColor="orange.400"
-            placeholder="Create a new task"
-            value={value}
-            onChange={onChangeValueHandler}
+            focusBorderColor="brand.500"
+            placeholder="Title"
+            value={title}
+            onChange={onChangeTitleHandler}
+            marginBottom="10px"
+          />
+          <Input
+            onKeyDown={OnKeyDownHandler}
+            focusBorderColor="brand.500"
+            placeholder="Description"
+            value={description}
+            onChange={onChangeDescriptionHandler}
           />
         </Box>
         <Box marginBottom="20px">
           <Text>Selected priority for your task</Text>
           <Select
-            isDisabled={value ? false : true}
+            isDisabled={title ? false : true}
             onChange={onChangePriorityHanlder}
-            focusBorderColor="orange.400"
+            focusBorderColor="brand.500"
             size="sm">
             <option value="Low">Low</option>
             <option value="Medium">Medium</option>
             <option value="High">High</option>
-            <option value="Extra">Extra</option>
           </Select>
         </Box>
 
         <Box>
           <Button
-            bg="orange.400"
+            disabled={title ? false : true}
+            bg="green.500"
             color="white"
-            _hover={{ backgroundColor: 'orange.300' }}
+            _hover={{ backgroundColor: 'green.600' }}
             onClick={onAddTaskHandler}>
             Add Task
           </Button>
