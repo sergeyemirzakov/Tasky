@@ -42,7 +42,7 @@ export const EditTask: React.FC<IEditTask> = ({ editTask, setShowModal, removeTa
       onEditTask({
         id: editTask.id,
         text: value,
-        priority: priority || editTask.priority,
+        priority: priority,
       }),
     );
     setShowModal(false);
@@ -56,7 +56,7 @@ export const EditTask: React.FC<IEditTask> = ({ editTask, setShowModal, removeTa
 
   return (
     <>
-      {/* <Box className="modal__screen-overlay"></Box> */}
+      <Box className="modal__screen-overlay"></Box>
 
       <Box
         className="modal__screen"
@@ -73,7 +73,7 @@ export const EditTask: React.FC<IEditTask> = ({ editTask, setShowModal, removeTa
         </Box>
         <Box marginTop="10px" marginBottom="10px">
           <Input
-            focusBorderColor="orange.400"
+            focusBorderColor="green.500"
             value={value}
             onChange={onChangeHandler}
             type="text"
@@ -83,7 +83,7 @@ export const EditTask: React.FC<IEditTask> = ({ editTask, setShowModal, removeTa
           <Box display="flex" alignItems="center" justifyContent="space-between">
             <Box>
               <Text>Do you want to change the priority?</Text>
-              <Text color="orange.400" fontSize="14px">
+              <Text color="green.500" fontSize="14px">
                 Your current priority is: <Badge>{editTask.priority}</Badge>
               </Text>
             </Box>
@@ -95,12 +95,11 @@ export const EditTask: React.FC<IEditTask> = ({ editTask, setShowModal, removeTa
             <Select
               onChange={(e) => setPriority(e.target.value)}
               marginTop="10px"
-              focusBorderColor="orange.400"
+              focusBorderColor="green.500"
               size="sm">
-              <option value="Low">Low</option>
-              <option value="Medium">Medium</option>
-              <option value="High">High</option>
-              <option value="Extra">Extra</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
             </Select>
           )}
         </Box>
@@ -108,10 +107,10 @@ export const EditTask: React.FC<IEditTask> = ({ editTask, setShowModal, removeTa
         <Box>
           <Button
             onClick={onEditTaskClickHandler}
-            bg="orange.400"
+            bg="green.500"
             color="white"
             marginRight="10px"
-            _hover={{ backgroundColor: 'orange.300' }}>
+            _hover={{ backgroundColor: 'green.600' }}>
             Change
           </Button>
           <Button
@@ -121,7 +120,7 @@ export const EditTask: React.FC<IEditTask> = ({ editTask, setShowModal, removeTa
             _hover={{ backgroundColor: 'red.300' }}>
             <span style={{ display: 'flex' }}>
               <MdDeleteOutline />
-              <Text> Delete</Text>
+              <Text>Delete</Text>
             </span>
           </Button>
         </Box>
