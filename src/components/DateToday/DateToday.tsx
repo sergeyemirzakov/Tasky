@@ -25,6 +25,7 @@ export const DateToday: React.FC = () => {
         alignItems="baseline"
         px={2}
         py={1}
+        marginBottom="5px"
         borderRadius="md"
         fontSize="12px"
         color="gray.500">
