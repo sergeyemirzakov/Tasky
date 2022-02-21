@@ -10,16 +10,16 @@ export const AddNewTask: React.FC<IAddNewTask> = ({ onShowModalHandler }) => {
   return (
     <>
       <Button
+        fontWeight="400"
+        _hover={{ backgroundColor: 'green.600' }}
         onClick={() => onShowModalHandler(true)}
-        bg="orange.400"
+        bg="green.500"
         color="white"
         cursor="pointer"
         display="flex"
         justifyContent="center"
         alignItems="center"
-        marginRight="1rem"
-        borderRadius="md"
-        _hover={{ backgroundColor: 'orange.300' }}>
+        borderRadius="md">
         <Box marginRight={3}>
           <MdAdd size="1.5rem" color="white" />
         </Box>
