@@ -1,22 +1,20 @@
 import React from 'react';
 import './App.scss';
-import { Sidebar } from './components/Sidebar/Sidebar';
 import { MainContent } from './components/MainContent/MainContent';
 import { db } from './database/firebase';
+import { Header } from './components/Header/Header';
+import { ScreenTitle } from './components/ScreenTitle/ScreenTitle';
 
-function App() {
-  // React.useEffect(() => {
-  //   console.log(db);
-  // });
-
+const App: React.FC = () => {
   return (
     <div className="App">
       <div className="app_content">
-        <Sidebar />
+        <Header />
+        <ScreenTitle />
         <MainContent />
       </div>
     </div>
   );
-}
+};
 
 export default App;
