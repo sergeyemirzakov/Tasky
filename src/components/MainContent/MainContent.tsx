@@ -20,7 +20,7 @@ export const MainContent: React.FC = () => {
 
   return (
     <>
-      <Box width="100%" display="flex" alignItems="center" flexDirection="column" px={10}>
+      <Box display="flex" alignItems="center" flexDirection="column">
         <Box width="100%">
           <MainContentHeader
             onShowModalHandler={(booleanValue: boolean) =>
@@ -35,7 +35,7 @@ export const MainContent: React.FC = () => {
               }
             />
           )}
-          <TodoList task={task} value={''} />
+          <TodoList task={task} />
         </Box>
       </Box>
     </>
