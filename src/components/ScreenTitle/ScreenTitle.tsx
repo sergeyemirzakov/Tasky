@@ -7,7 +7,7 @@ export const ScreenTitle: React.FC = () => {
     <>
       <Box padding="12px 0" bg="gray.100">
         <Box className="container">
-          <Text fontWeight="bold" fontSize="lg">
+          <Text fontWeight="bold" fontSize="xl">
             Dashboard
           </Text>
         </Box>
