@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Box, Text, Badge } from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
 import { GoCalendar } from 'react-icons/go';
-import { month } from '../../util/month';
-import { days } from '../../util/days';
+import { month } from '../../helpers/month';
+import { days } from '../../helpers/days';
 
 export const DateToday: React.FC = () => {
   const [dating, setDating] = React.useState<string>('');
