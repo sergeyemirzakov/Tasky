@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 
 import { IoMdClose } from 'react-icons/io';
 import { MdDeleteOutline } from 'react-icons/md';
+import { priorityIndex } from '../../helpers/priorityIndex';
 
 import removeSound from '../../sounds/remove.mp3';
 
@@ -43,6 +44,7 @@ export const EditTask: React.FC<IEditTask> = ({ editTask, setShowModal, removeTa
         id: editTask.id,
         text: value,
         priority: priority,
+        priorityIndex: priorityIndex(priority) || 1,
       }),
     );
     setShowModal(false);
@@ -57,7 +59,6 @@ export const EditTask: React.FC<IEditTask> = ({ editTask, setShowModal, removeTa
   return (
     <>
       <Box className="modal__screen-overlay"></Box>
-
       <Box
         className="modal__screen"
         top="50%"
@@ -97,9 +98,9 @@ export const EditTask: React.FC<IEditTask> = ({ editTask, setShowModal, removeTa
               marginTop="10px"
               focusBorderColor="green.500"
               size="sm">
-              <option value="low">Low</option>
-              <option value="medium">Medium</option>
-              <option value="high">High</option>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
             </Select>
           )}
         </Box>
