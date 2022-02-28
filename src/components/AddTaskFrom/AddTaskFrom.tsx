@@ -7,6 +7,7 @@ import { IoMdClose } from 'react-icons/io';
 
 import { useDispatch } from 'react-redux';
 import { addTodo } from '../../store/taskSlice';
+import { priorityIndex } from '../../helpers/priorityIndex';
 
 import notificationSound from '../../sounds/notification.mp3';
 
@@ -45,6 +46,7 @@ export const AddTaskFrom: React.FC<IAddTaskForm> = ({
           text: title,
           priority: priority,
           description: description || '',
+          priorityIndex: priorityIndex(priority) || 1,
         }),
       );
       playNotification.play();
