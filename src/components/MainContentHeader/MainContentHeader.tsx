@@ -24,12 +24,12 @@ export const MainContentHeader: React.FC<IMainContentHeader> = ({
               <SearchField />
             </Box>
             <Box display="flex" alignItems="center">
+              <Filters />
               <AddNewTask
                 onShowModalHandler={(booleanValue: boolean) =>
                   onShowModalHandler(booleanValue)
                 }
               />
-              <Filters />
             </Box>
           </Box>
         </Box>
