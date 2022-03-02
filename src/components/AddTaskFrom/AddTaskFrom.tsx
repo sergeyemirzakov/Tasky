@@ -2,8 +2,7 @@ import React from 'react';
 
 import './AddTaskFrom.scss';
 
-import { Box, Input, Text, Button, Select } from '@chakra-ui/react';
-import { IoMdClose } from 'react-icons/io';
+import { Box, Input, Text, Button, Select, CloseButton } from '@chakra-ui/react';
 
 import { useDispatch } from 'react-redux';
 import { addTodo } from '../../store/taskSlice';
@@ -74,7 +73,7 @@ export const AddTaskFrom: React.FC<IAddTaskForm> = ({
         <Box display="flex" alignItems="baseline" justifyContent="space-between">
           <Text>{modalTitle}</Text>
           <Box onClick={() => onShowModalHandler(false)}>
-            <IoMdClose cursor="pointer" />
+            <CloseButton />
           </Box>
         </Box>
         <Box marginTop="10px" marginBottom="10px">
