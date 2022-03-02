@@ -4,7 +4,7 @@ import { InputGroup, InputLeftElement, Input, Box } from '@chakra-ui/react';
 
 import { BiSearch } from 'react-icons/bi';
 import { useDispatch } from 'react-redux';
-import { filterTodo } from '../../store/taskSlice';
+import { searchTodo } from '../../store/taskSlice';
 
 export const SearchField: React.FC = () => {
   const [searchValue, setSearchValue] = React.useState<string>('');
@@ -13,7 +13,7 @@ export const SearchField: React.FC = () => {
 
   const onSearchValueChangeHanlder = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value.toLowerCase());
-    dispatch(filterTodo(e.target.value.toLowerCase()));
+    dispatch(searchTodo(e.target.value.toLowerCase()));
   };
 
   return (
