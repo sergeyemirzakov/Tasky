@@ -1,11 +1,19 @@
 import React from 'react';
 
-import { Box, Input, Select, Button, Text, Switch, Badge } from '@chakra-ui/react';
+import {
+  Box,
+  Input,
+  Select,
+  Button,
+  Text,
+  Switch,
+  Badge,
+  CloseButton,
+} from '@chakra-ui/react';
 
 import { onEditTask } from '../../store/taskSlice';
 import { useDispatch } from 'react-redux';
 
-import { IoMdClose } from 'react-icons/io';
 import { MdDeleteOutline } from 'react-icons/md';
 import { priorityIndex } from '../../helpers/priorityIndex';
 
@@ -68,8 +76,8 @@ export const EditTask: React.FC<IEditTask> = ({ editTask, setShowModal, removeTa
         boxShadow="xl">
         <Box display="flex" alignItems="baseline" justifyContent="space-between">
           <Text>Do you want to change this task?</Text>
-          <Box>
-            <IoMdClose cursor="pointer" onClick={() => setShowModal(false)} />
+          <Box onClick={() => setShowModal(false)}>
+            <CloseButton />
           </Box>
         </Box>
         <Box marginTop="10px" marginBottom="10px">
