@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import taskSliceReducer from './taskSlice';
+import searchSlice from './searchSlice';
 
 export const store = configureStore({
   reducer: {
     taskSliceReducer,
+    searchSlice,
   },
 });
 
