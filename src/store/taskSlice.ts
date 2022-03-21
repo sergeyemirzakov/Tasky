@@ -1,49 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { stat } from 'fs';
-import { StatLabel } from '@chakra-ui/react';
-
-export interface Todo {
-  id: string;
-  text: string;
-  description: string;
-  complete: boolean;
-  priority: string;
-}
-
-export interface IInitialState {
-  todos: Todo[];
-  showModal: boolean;
-  searchValue: string;
-}
-
-const initialState: IInitialState = {
-  todos: [
-    {
-      id: '0',
-      text: 'Great title',
-      description: 'Great Description',
-      complete: false,
-      priority: 'low',
-    },
-    {
-      id: '1',
-      text: 'Another great titile',
-      description: 'And another great description',
-      complete: false,
-      priority: 'medium',
-    },
-    {
-      id: '2',
-      text: 'Really important title',
-      description: 'Really important description',
-      complete: false,
-      priority: 'high',
-    },
-  ],
-  showModal: false,
-  searchValue: '',
-};
+import { arrayMoveImmutable } from 'array-move';
+import { initialState } from './initialState';
 
 export const taskSlice = createSlice({
   name: 'task',
@@ -51,7 +9,12 @@ export const taskSlice = createSlice({
   reducers: {
     addTodo: (
       state,
-      action: PayloadAction<{ text: string; priority: string; description?: string }>,
+      action: PayloadAction<{
+        text: string;
+        priority: string;
+        description?: string;
+        priorityIndex: number;
+      }>,
     ) => {
       state.todos.push({
         id: uuidv4(),
@@ -59,10 +22,18 @@ export const taskSlice = createSlice({
         description: action.payload.description || '',
         complete: false,
         priority: action.payload.priority.toLowerCase() || 'low',
+        priorityIndex: action.payload.priorityIndex || 1,
       });
     },
-    filterTodo: (state, action: PayloadAction<string>) => {
-      state.searchValue = action.payload;
+    sortTodos: (state, action: PayloadAction<string>) => {
+      if (action.payload === 'Priority') {
+        state.todos.sort((a, b) => (a['priorityIndex'] > b['priorityIndex'] ? -1 : 1));
+      } else if (action.payload === 'Name') {
+        state.todos.sort((a, b) => (a['text'] > b['text'] ? 1 : -1));
+      }
+    },
+    setSorted: (state, action: PayloadAction<string>) => {
+      state.sorted = action.payload;
     },
     isComplete: (state, action: PayloadAction<string>) => {
       const completeTodo = state.todos.find((s) => s.id === action.payload);
@@ -79,21 +50,37 @@ export const taskSlice = createSlice({
         id: string | null;
         text: string | null;
         priority: string | null;
+        priorityIndex: number | null;
       }>,
     ) => {
       const currentTask = state.todos.find((t) => t.id === action.payload.id);
       if (currentTask !== undefined) {
         currentTask.text = action.payload.text || '';
         currentTask.priority = action.payload.priority || 'low';
+        currentTask.priorityIndex = action.payload.priorityIndex || 1;
       }
     },
-    showModal: (state, action: PayloadAction<boolean>) => {
-      state.showModal = action.payload;
+    onChangeTaskOrged: (
+      state,
+      action: PayloadAction<{ oldIndex: number; newIndex: number }>,
+    ) => {
+      state.todos = arrayMoveImmutable(
+        state.todos,
+        action.payload.oldIndex,
+        action.payload.newIndex,
+      );
     },
   },
 });
 
-export const { addTodo, isComplete, isRemoveTask, onEditTask, showModal, filterTodo } =
-  taskSlice.actions;
+export const {
+  addTodo,
+  isComplete,
+  isRemoveTask,
+  onEditTask,
+  sortTodos,
+  setSorted,
+  onChangeTaskOrged,
+} = taskSlice.actions;
 
 export default taskSlice.reducer;
