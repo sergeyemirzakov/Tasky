@@ -1,13 +1,17 @@
 import React from 'react';
-
 import './AddTaskFrom.scss';
-
-import { Box, Input, Text, Button, Select, CloseButton } from '@chakra-ui/react';
-
+import {
+  Box,
+  Input,
+  Text,
+  Button,
+  Select,
+  CloseButton,
+  useToast,
+} from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
 import { addTodo } from '../../store/taskSlice';
 import { priorityIndex } from '../../helpers/priorityIndex';
-
 import notificationSound from '../../sounds/notification.mp3';
 
 interface IAddTaskForm {
@@ -23,8 +27,8 @@ export const AddTaskFrom: React.FC<IAddTaskForm> = ({
   const [title, setTitle] = React.useState<string>('');
   const [description, setDescription] = React.useState<string>('');
   const [priority, setPriority] = React.useState<string>('');
-
   const playNotification = new Audio(notificationSound);
+  const toast = useToast();
 
   const onChangeTitleHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setTitle(e.target.value);
@@ -50,6 +54,13 @@ export const AddTaskFrom: React.FC<IAddTaskForm> = ({
       );
       playNotification.play();
       onShowModalHandler(false);
+      toast({
+        title: 'Task created.',
+        description: "You've added your task.",
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+      });
     }
     setTitle('');
   };
