@@ -9,6 +9,7 @@ import {
   Switch,
   Badge,
   CloseButton,
+  useToast,
 } from '@chakra-ui/react';
 
 import { onEditTask } from '../../store/taskSlice';
@@ -34,8 +35,8 @@ export const EditTask: React.FC<IEditTask> = ({ editTask, setShowModal, removeTa
   const [check, setCheck] = React.useState<boolean>(false);
   const [priority, setPriority] = React.useState<string>('');
   const playRemove = new Audio(removeSound);
-
   const dispatch = useDispatch();
+  const toast = useToast();
 
   React.useEffect(() => {
     if (editTask.textValue === null) return;
@@ -62,6 +63,13 @@ export const EditTask: React.FC<IEditTask> = ({ editTask, setShowModal, removeTa
     removeTask(id);
     setShowModal(false);
     playRemove.play();
+    toast({
+      title: 'Task removed.',
+      description: "You've removed your task.",
+      status: 'error',
+      duration: 3000,
+      isClosable: true,
+    });
   };
 
   return (
